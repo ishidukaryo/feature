@@ -93,3 +93,4 @@ echo '<br>';
 // 車の情報表示を表示
 echo $car1->information();
 echo '<br>';
+
