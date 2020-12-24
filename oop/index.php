@@ -2,7 +2,7 @@
 
 // 以下にCarクラスを定義して、当プログラムを実行した時にエラーがでないようにして下さい。
 
-class car
+class Car
 {
     private $name; #車種
     private $number; #カーナンバー
@@ -47,7 +47,7 @@ class car
 
     public function information()
     {
-        echo '車の車種:' . $this->getName() . '、車体番号:' . $this->getNumber() . '、カラー:' . $this->getColor() . 'です。';
+        return '車の車種:' . $this->getName() . '、車体番号:' . $this->getNumber() . '、カラー:' . $this->getColor() . 'です。';
     }
 }
 
