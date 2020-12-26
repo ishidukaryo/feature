@@ -2,7 +2,7 @@
 
 // 以下にCarクラスを定義して、当プログラムを実行した時にエラーがでないようにして下さい。
 
-class Car
+class car
 {
     private $name; #車種
     private $number; #カーナンバー
@@ -47,8 +47,33 @@ class Car
 
     public function information()
     {
-        return '車の車種:' . $this->getName() . '、車体番号:' . $this->getNumber() . '、カラー:' . $this->getColor() . 'です。';
+        echo '車の車種:' . $this->getName() . '、車体番号:' . $this->getNumber() . '、カラー:' . $this->getColor() . 'です。';
     }
+}
+
+class Taxi extends Car{
+    private $passenger = 0;
+
+    public function pickUp($passenger)
+    {
+        $this->passenger = $passenger;
+    }
+
+    public function information()
+    {
+        echo '車の車種:' . $this->getName() . '、車体番号:' . $this->getNumber() . '、カラー:' . $this->getColor() . '、乗車人数は' . $this->passenger . 'です。';
+    }
+
+    public function lower($passenger)
+    {
+        $this->passenger = $this->passenger - $passenger;
+        if ($this->passenger >= 0) {
+            echo $passenger . '人降車しました。';
+        } else {
+            echo '降車人数に誤りがあります';
+        }
+    }
+
 }
 
 
@@ -59,37 +84,19 @@ class Car
 // 引数 : 車名、車体番号、カラー
 $car1 = new Car('ランクル', 100, 'black');
 
-// 車名(車種)を取得
-echo $car1->getName();
+// Taxiクラスのインスタンスを生成
+$taxi1 = new Taxi('クラウンのタクシー', 222, 'black');
+
+// 3人乗車
+$taxi1->pickUp(3);
+
+// タクシーの情報表示を表示
+echo $taxi1->information();
 echo '<br>';
 
-// 車体番号を取得
-echo $car1->getNumber();
+// 2人降車
+$taxi1->lower(2);
 echo '<br>';
 
-// カラーを取得
-echo $car1->getColor();
-echo '<br>';
-
-// 車の情報表示を表示
-echo $car1->information();
-echo '<br>';
-
-// 車名(車種)を更新
-$car1->setName('アルファード');
-echo $car1->getName();
-echo '<br>';
-
-// 車体番号を取得
-$car1->setNumber(200);
-echo $car1->getNumber();
-echo '<br>';
-
-// カラーを取得
-$car1->setColor('red');
-echo $car1->getColor();
-echo '<br>';
-
-// 車の情報表示を表示
-echo $car1->information();
-echo '<br>';
+// 2人降車
+$taxi1->lower(2);
