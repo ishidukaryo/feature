@@ -2,7 +2,7 @@
 
 // 以下にCarクラスを定義して、当プログラムを実行した時にエラーがでないようにして下さい。
 
-class car
+class Car
 {
     private $name; #車種
     private $number; #カーナンバー
@@ -52,7 +52,7 @@ class car
 }
 
 class Taxi extends Car{
-    private $passenger = 0;
+    private $passenger;
 
     public function pickUp($passenger)
     {
@@ -61,14 +61,14 @@ class Taxi extends Car{
 
     public function information()
     {
-        echo '車の車種:' . $this->getName() . '、車体番号:' . $this->getNumber() . '、カラー:' . $this->getColor() . '、乗車人数は' . $this->passenger . 'です。';
+        return '車の車種:' . $this->getName() . '、車体番号:' . $this->getNumber() . '、カラー:' . $this->getColor() . '、乗車人数は' . $this->passenger . 'です。';
     }
 
     public function lower($passenger)
     {
-        $this->passenger = $this->passenger - $passenger;
-        if ($this->passenger >= 0) {
+        if ($this->passenger - $passenger >= 0) {
             echo $passenger . '人降車しました。';
+            $this->passenger = $this->passenger - $passenger;
         } else {
             echo '降車人数に誤りがあります';
         }
